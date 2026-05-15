@@ -1055,6 +1055,112 @@ button {
   font-weight: 400;
 }
 
+.contactSection {
+  scroll-margin-top: 96px;
+  background: var(--mint-50);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 1fr);
+  gap: clamp(36px, 5vw, 72px);
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.contactLead {
+  align-self: start;
+}
+
+.contactNote {
+  display: flex;
+  gap: 18px;
+  margin-top: 34px;
+  padding: 28px;
+  background: var(--white);
+  box-shadow: var(--shadow-faint);
+}
+
+.contactNote .miniIcon {
+  flex: 0 0 auto;
+  margin: 0;
+  background: var(--aqua-100);
+}
+
+.contactNote h3 {
+  margin: 0 0 8px;
+  color: var(--teal-900);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.contactNote p {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.contactCards {
+  display: grid;
+  gap: 18px;
+}
+
+.contactCard {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  padding: 28px;
+  background: var(--white);
+  box-shadow: var(--shadow-faint);
+}
+
+.contactIcon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 2px;
+  background: var(--aqua-100);
+  color: var(--teal-700);
+}
+
+.contactIcon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+.contactCard p {
+  margin: 0 0 7px;
+  color: var(--teal-700);
+  font-size: 14px;
+}
+
+.contactCard h3 {
+  margin: 0 0 7px;
+  color: var(--teal-900);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.18;
+}
+
+.contactCard a:hover {
+  color: var(--teal-700);
+}
+
+.contactCard span:not(.contactIcon) {
+  color: var(--gray-500);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
 .arrowButton {
   position: absolute;
   top: 54%;
@@ -1258,6 +1364,7 @@ button {
   .heroInner,
   .aboutGrid,
   .serviceLayout,
+  .contactGrid,
   .appointmentPanel,
   .newsletterCard,
   .footerGrid {
@@ -1398,6 +1505,24 @@ button {
     min-height: 56px;
     margin-bottom: 48px;
     padding: 0 18px;
+  }
+
+  .contactSection {
+    scroll-margin-top: 142px;
+  }
+
+  .contactNote,
+  .contactCard {
+    padding: 24px;
+  }
+
+  .contactCard {
+    grid-template-columns: 1fr;
+  }
+
+  .contactCard h3 {
+    font-size: 20px;
+    overflow-wrap: anywhere;
   }
 
   .blogTags {

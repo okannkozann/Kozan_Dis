@@ -615,9 +615,102 @@ function BlogPage() {
 }
 
 
+function ContactSection() {
+  const contactMethods = [
+    {
+      title: "Telefon",
+      value: "+90 322 000 00 00",
+      href: "tel:+903220000000",
+      detail: "Randevu ve kısa bilgi talepleri için bizi arayabilirsiniz.",
+      icon: "phone",
+    },
+    {
+      title: "E-posta",
+      value: "iletisim@kozan.dental",
+      href: "mailto:iletisim@kozan.dental",
+      detail: "Tedavi süreci ve klinik hakkında sorularınızı iletin.",
+      icon: "mail",
+    },
+    {
+      title: "Adres",
+      value: "Kozan, Adana",
+      href: "#contact",
+      detail: "Kozan Ağız ve Diş Sağlığı Merkezi'nde hizmet veriyoruz.",
+      icon: "pin",
+    },
+  ];
+
+  return (
+    <section className="section contactSection" id="contact">
+      <div className="contactGrid">
+        <div className="contactLead">
+          <SectionIntro label="İletişim" title="Kliniğimizle İletişime Geçin" align="left">
+            Randevu planlamak, tedaviler hakkında bilgi almak veya size en uygun bakım adımını
+            konuşmak için ekibimize ulaşabilirsiniz.
+          </SectionIntro>
+          <div className="contactNote">
+            <span className="miniIcon">
+              <Icon name="tooth" />
+            </span>
+            <div>
+              <h3>Acil bir diş ağrınız mı var?</h3>
+              <p>
+                Uygun randevu aralığını birlikte belirlemek için telefonla bize ulaşmanız yeterli.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="contactCards" aria-label="İletişim bilgileri">
+          {contactMethods.map((item) => (
+            <article className="contactCard" key={item.title}>
+              <span className="contactIcon">
+                <ContactIcon name={item.icon} />
+              </span>
+              <div>
+                <p>{item.title}</p>
+                <h3>
+                  <a href={item.href}>{item.value}</a>
+                </h3>
+                <span>{item.detail}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactIcon({ name }) {
+  if (name === "phone") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.6 3.5 9 8.7l-2 1.2a12.5 12.5 0 0 0 7.1 7.1l1.2-2 5.2 2.4c.4.2.6.6.5 1.1l-.6 2.8c-.1.5-.6.8-1.1.8A17.2 17.2 0 0 1 2 4.7c0-.5.3-1 .8-1.1l2.8-.6c.5-.1.9.1 1 .5Z" />
+      </svg>
+    );
+  }
+
+  if (name === "mail") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 6h16v12H4z" />
+        <path d="m4 7 8 6 8-6" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 21s7-6.4 7-13a7 7 0 1 0-14 0c0 6.6 7 13 7 13Z" />
+      <circle cx="12" cy="8" r="2.5" />
+    </svg>
+  );
+}
+
 function Footer() {
   return (
-    <footer className="footer tealPattern" id="contact">
+    <footer className="footer tealPattern">
       <div className="footerGrid">
         <div className="footerLead">
           <a className="brand footerBrand" href="#top">
@@ -772,10 +865,13 @@ export default function App() {
               <SpecialtyCare />
             </div>
             <div className="reveal">
-              <Appointment />
+              <Testimonials />
             </div>
             <div className="reveal">
-              <Testimonials />
+              <ContactSection />
+            </div>
+            <div className="reveal">
+              <Appointment />
             </div>
           </main>
         </>
