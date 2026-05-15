@@ -247,7 +247,7 @@ function Icon({ name }) {
   );
 }
 
-function Header({ currentPage, onNavigate }) {
+function Header({ currentPage, onNavigate, onAppointment }) {
   const [scrolled, setScrolled] = useState(false);
 
   React.useEffect(() => {
@@ -303,24 +303,34 @@ function Header({ currentPage, onNavigate }) {
   );
 }
 
-function Hero() {
+function Hero({ onNavigate }) {
   return (
     <section className="hero" id="top">
       <img className="heroBgImage" src={heroBackground} alt="" />
       <div className="heroInner">
         <div className="heroCopy">
           <h1>
-            Özgüvenle gülümseyin.
+            Gülüşünüz
             <br />
-            Rahat bir yaşam sürün.
+            bizim için değerli.
+            <br />
+            Her detayını
+            <br />
+            özenle planlıyoruz.
           </h1>
           <p>
-            Konforunuz ve sağlığınız ön planda tutularak kapsamlı diş ve ağız sağlığı hizmetleri
-            sunuyoruz. Rutin kontrollerden ileri düzey işlemlere kadar, deneyimli ekibimiz en
-            sağlıklı gülümsemenize ulaşmanıza yardımcı olmak için burada.
+            Diş sağlığınızı korurken estetik beklentilerinizi de dikkate alıyoruz.
+            Konforlu klinik ortamımızda size özel, modern ve güvenilir tedavi seçenekleri sunuyoruz.
           </p>
           <div className="heroActions">
-            <a className="button buttonDark" href="#appointment">
+            <a
+              className="button buttonDark"
+              href="#appointment"
+              onClick={(event) => {
+                event.preventDefault();
+                onNavigate("home", "#appointment");
+              }}
+            >
               Randevu Al
             </a>
             <a className="button buttonLight" href="#services">
@@ -462,7 +472,7 @@ function SpecialtyCare() {
   );
 }
 
-function Appointment() {
+function Appointment({ onAppointment }) {
   return (
     <section className="appointment tealPattern" id="appointment">
       <div className="appointmentIntro">
@@ -486,9 +496,9 @@ function Appointment() {
         </div>
         <div className="appointmentImage">
           <img src={appointmentRoom} alt="Kozan Diş tedavi odası" />
-          <a className="button buttonDark floatingButton" href="mailto:email@verve.dent">
+          <button className="button buttonDark floatingButton" onClick={onAppointment}>
             Randevu Al
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -546,7 +556,7 @@ function Testimonials() {
   );
 }
 
-function BlogPage() {
+function BlogPage({ onAppointment }) {
   const [query, setQuery] = useState("");
   const normalizedQuery = normalizeSearchText(query.trim());
   const visiblePosts = useMemo(() => {
@@ -588,16 +598,16 @@ function BlogPage() {
         <div className="blogGrid">
           {visiblePosts.map((post) => (
             <article className="blogCard" key={post.title}>
-              <a href="#appointment" aria-label={`${post.title} yazısını aç`}>
+              <button className="blogCardButton" onClick={onAppointment} aria-label={`${post.title} yazısını aç`}>
                 <img src={post.image} alt="" />
-              </a>
+              </button>
               <div className="blogTags" aria-label="Makale kategorileri">
                 {post.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
               </div>
               <h3>
-                <a href="#appointment">{post.title}</a>
+                <button className="blogTitleButton" onClick={onAppointment}>{post.title}</button>
               </h3>
               <time dateTime="2024-03-09">{post.date}</time>
             </article>
@@ -614,6 +624,51 @@ function BlogPage() {
   );
 }
 
+function AppointmentModal({ isOpen, onClose }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modalOverlay" onClick={onClose}>
+      <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+        <button className="closeButton" onClick={onClose} aria-label="Kapat">
+          &times;
+        </button>
+        <div className="modalHeader">
+          <h2>Hızlı Randevu</h2>
+          <p>Bizimle iletişime geçerek hemen randevunuzu oluşturabilirsiniz.</p>
+        </div>
+        <div className="modalBody">
+          <div className="modalContactItem">
+            <div className="modalIcon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.28-2.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
+            <div>
+              <span>Telefon</span>
+              <a href="tel:+903220000000">+90 322 000 00 00</a>
+            </div>
+          </div>
+          <div className="modalContactItem">
+            <div className="modalIcon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div>
+              <span>E-posta</span>
+              <a href="mailto:iletisim@kozan.dental">iletisim@kozan.dental</a>
+            </div>
+          </div>
+        </div>
+        <button className="button buttonDark fullWidth" onClick={onClose}>
+          Anladım
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function ContactSection() {
   const contactMethods = [
@@ -776,6 +831,10 @@ export default function App() {
     return window.location.hash === "#blog" ? "blog" : "home";
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   function handleNavigate(nextPage, hash) {
     setPage(nextPage);
     window.history.pushState(null, "", hash);
@@ -842,15 +901,15 @@ export default function App() {
 
   return (
     <>
-      <Header currentPage={page} onNavigate={handleNavigate} />
+      <Header currentPage={page} onNavigate={handleNavigate} onAppointment={openModal} />
       {page === "blog" ? (
         <main>
-          <BlogPage />
-          <Appointment />
+          <BlogPage onAppointment={openModal} />
+          <Appointment onAppointment={openModal} />
         </main>
       ) : (
         <>
-          <Hero />
+          <Hero onNavigate={handleNavigate} />
           <main>
             <div className="reveal">
               <About />
@@ -865,18 +924,16 @@ export default function App() {
               <SpecialtyCare />
             </div>
             <div className="reveal">
+              <Appointment onAppointment={openModal} />
+            </div>
+            <div className="reveal">
               <Testimonials />
-            </div>
-            <div className="reveal">
-              <ContactSection />
-            </div>
-            <div className="reveal">
-              <Appointment />
             </div>
           </main>
         </>
       )}
       <Footer />
+      <AppointmentModal isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 }

@@ -324,8 +324,9 @@ button {
   z-index: 0;
   pointer-events: none;
   background: linear-gradient(90deg,
-      rgba(2, 146, 151, 0.7) 0%,
-      rgba(2, 146, 151, 0) 65%);
+      rgba(1, 73, 75, 0.88) 0%,
+      rgba(1, 73, 75, 0.6) 40%,
+      rgba(1, 73, 75, 0) 85%);
 }
 
 .heroBgImage {
@@ -352,7 +353,7 @@ button {
   max-width: var(--container);
   min-height: 720px;
   margin: 0 auto;
-  padding-top: 200px;
+  padding-top: 160px;
 }
 
 .heroCopy {
@@ -362,13 +363,13 @@ button {
 }
 
 .hero h1 {
-  margin: 0 0 32px;
+  margin: 0 0 24px;
   color: #68F8FD;
-  font-size: 48px;
-  font-weight: 600;
+  font-size: 64px;
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 br {
@@ -381,10 +382,10 @@ button {
   max-width: 580px;
   margin: 0 0 52px;
   color: rgba(255, 255, 255, 0.95);
-  font-size: 18px;
-  font-weight: 100;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.6;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
   font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
 }
 
@@ -1600,5 +1601,163 @@ button {
 
   .footerBottom {
     flex-direction: column;
+  }
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(1, 73, 75, 0.4);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 300ms ease-out;
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  padding: 48px;
+  background: var(--white);
+  border-radius: 4px;
+  box-shadow: 0 32px 64px -16px rgba(1, 73, 75, 0.2);
+  animation: slideUp 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closeButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--teal-900);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 180ms ease;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.modalHeader {
+  margin-bottom: 32px;
+}
+
+.modalHeader h2 {
+  margin: 0 0 12px;
+  color: var(--teal-900);
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.modalHeader p {
+  margin: 0;
+  color: var(--gray-500);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.modalBody {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.modalContactItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: var(--mint-50);
+  border-radius: 2px;
+}
+
+.modalIcon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--white);
+  color: var(--teal-700);
+  border-radius: 2px;
+}
+
+.modalIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.modalContactItem span {
+  display: block;
+  color: var(--teal-700);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.modalContactItem a {
+  color: var(--teal-900);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blogCardButton,
+.blogTitleButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.blogCardButton img {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    padding: 32px 24px;
   }
 }
