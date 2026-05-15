@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import heroBackground from "./assets/generated/hero-background-v2.png";
 import clinicLobby from "./assets/generated/about-clinic.png";
 import dentalCabinet from "./assets/generated/dental-treatment.png";
-import appointmentRoom from "./assets/reference/appointment-room.png";
+import appointmentRoom from "./assets/generated/appointment-room-v2.png";
 import teamAmelia from "./assets/generated/team-amelia.png";
 import teamElizabeth from "./assets/generated/team-elizabeth.png";
 import blogFirstVisit from "./assets/generated/blog-first-visit.png";
@@ -36,11 +36,11 @@ const teamMembers = [
 const generalServices = [
   [
     "Kapsamlı Diş Muayeneleri",
-    "Düzenli kontroller, sorunların erken teşhisini sağlayarak proaktif bakımı destekler ve optimum ağız sağlığını korur.",
+    "Ağız ve diş sağlığınızı detaylı şekilde değerlendiriyor, ihtiyaçlarınıza uygun tedavi planını oluşturuyoruz.",
   ],
   [
     "Profesyonel Diş Temizliği",
-    "Uzman hijyenistlerimiz gelişmiş tekniklerle plak ve diş taşını temizleyerek ferah bir gülüş sağlar.",
+    "Kliniğimizde, dişlerde biriken plak ve tartarları özel ekipmanlarla temizleyerek ağız ve diş sağlığınızı korumaya yardımcı oluyoruz.",
   ],
   [
     "Dijital Röntgen ve Teşhis",
@@ -60,23 +60,7 @@ const generalServices = [
   ],
 ];
 
-const specialtyServices = [
-  {
-    title: "Restoratif ve Cerrahi Hizmetler",
-    icon: "syringe",
-    items: ["Restoratif Diş Hekimliği", "Ağız Cerrahisi"],
-  },
-  {
-    title: "Özel Tedaviler",
-    icon: "bandage",
-    items: ["Geleneksel Diş Telleri", "Invisalign Şeffaf Plaklar", "Tedavi Sonrası Koruyucular"],
-  },
-  {
-    title: "Konfor ve Acil Durum Çözümleri",
-    icon: "tooth",
-    items: ["Sedasyon Diş Hekimliği", "Çene Eklem Bozukluğu Tedavisi", "Acil Diş Hekimliği"],
-  },
-];
+
 
 const schedule = [
   ["Pazartesi", "08:00 - 18:00"],
@@ -362,8 +346,8 @@ function About() {
         </div>
         <div className="aboutCopy">
           <SectionIntro label="Hakkında" title="Diş Kliniğimiz" align="left">
-            Kozan'da, sıcak ve samimi bir ortamda olağanüstü diş sağlığı hizmeti sunmaya büyük önem
-            veriyoruz.
+            Kliniğimizde ağız ve diş sağlığınızı modern teknoloji, uzman hekim kadrosu ve hasta odaklı yaklaşımımızla ele alıyoruz. Her hastamız için güvenilir, konforlu ve kişiye özel tedavi çözümleri sunmayı amaçlıyoruz.
+            Estetik diş hekimliği, implant, ortodonti ve genel diş tedavilerinde sağlıklı, doğal ve uzun vadeli sonuçlar hedefliyoruz.
           </SectionIntro>
           <div className="proofGrid">
             <article>
@@ -391,8 +375,8 @@ function Team() {
   return (
     <section className="section teamSection softPattern">
       <SectionIntro label="Bizimle Tanışın" title="Tutkulu Ekibimiz">
-        Kozan'ın kalbinde, özverili ekibimiz yer almaktadır.
-        Bizler, sıcak ve samimi bir ortamda olağanüstü diş sağlığı hizmeti sunmaya kendini adamış, yüksek nitelikli ve deneyimli diş hekimleri ve personelden oluşan bir grubuz.
+        Kliniğimizde her hastamızı güler yüzle karşılayan, alanında deneyimli ve hasta memnuniyetini ön planda tutan bir ekip ile hizmet veriyoruz. Hekimlerimiz ve klinik personelimiz, tedavi sürecinizin her aşamasında sizi bilgilendirerek kendinizi güvende ve rahat hissetmenizi sağlar.
+        Ağız ve diş sağlığınız için modern tedavi yaklaşımlarını, özenli bir hizmet anlayışıyla bir araya getiriyoruz. Sağlıklı, estetik ve doğal gülüşlere ulaşmanız için ihtiyaçlarınıza özel çözümler sunuyoruz.
       </SectionIntro>
       <div className="teamGrid">
         {teamMembers.map(([name, role, image]) => (
@@ -446,31 +430,7 @@ function ServicesOverview() {
   );
 }
 
-function SpecialtyCare() {
-  return (
-    <section className="section specialtySection">
-      <SectionIntro label="Hizmetler" title="Uzmanlaşmış ve Koruyucu Bakım">
-        Rutin kontrolden özel tedavilere, her adımı konfor ve uzun vadeli ağız sağlığı odağıyla
-        planlıyoruz.
-      </SectionIntro>
-      <div className="specialtyGrid">
-        {specialtyServices.map((service) => (
-          <article className="specialtyCard" key={service.title}>
-            <div className="roundIcon dotAccent">
-              <Icon name={service.icon} />
-            </div>
-            <h3>{service.title}</h3>
-            <ul>
-              {service.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
+
 
 function Appointment({ onAppointment }) {
   return (
@@ -519,7 +479,7 @@ function Testimonials() {
 
   return (
     <section className="section testimonialSection" id="testimonials">
-      <SectionIntro label="Müşteri Yorumları" title="Hastalarımızdan Gelen Güzel Sözler">
+      <SectionIntro label="Yorumlar" title="Hastalarımızdan Gelenler">
         Değerli hastalarımızın dönüşen gülümsemelerinin ve paylaştıkları deneyimlerin öykülerini
         keşfedin. Sizin memnuniyetiniz bizim en büyük başarımızdır.
       </SectionIntro>
@@ -581,19 +541,7 @@ function BlogPage({ onAppointment }) {
           </p>
         </div>
 
-        <label className="blogSearch">
-          <span className="srOnly">Makalelerde ara</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" />
-            <path d="m16.5 16.5 4 4" />
-          </svg>
-          <input
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Makale ara..."
-          />
-        </label>
+
 
         <div className="blogGrid">
           {visiblePosts.map((post) => (
@@ -763,9 +711,9 @@ function ContactIcon({ name }) {
   );
 }
 
-function Footer() {
+function Footer({ onNavigate }) {
   return (
-    <footer className="footer tealPattern">
+    <footer className="footer siteFooter" id="contact">
       <div className="footerGrid">
         <div className="footerLead">
           <a className="brand footerBrand" href="#top">
@@ -788,19 +736,44 @@ function Footer() {
         </div>
         <nav aria-label="Footer menü">
           <h2>Menü</h2>
-          <a href="#about">Hakkımızda</a>
-          <a href="#services">Hizmetler</a>
-          <a href="#pricing">Fiyatlandırma</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">İletişim</a>
+          <a
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate("home", "#about");
+            }}
+          >
+            Hakkımızda
+          </a>
+          <a
+            href="#services"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate("home", "#services");
+            }}
+          >
+            Hizmetler
+          </a>
+          <a
+            href="#blog"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate("blog", "#blog");
+            }}
+          >
+            Blog
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate("home", "#contact");
+            }}
+          >
+            İletişim
+          </a>
         </nav>
-        <nav aria-label="Yasal bağlantılar">
-          <h2>Yararlı Linkler</h2>
-          <a href="#contact">Gizlilik Politikası</a>
-          <a href="#contact">Çerez Politikası</a>
-          <a href="#contact">Lisanslama</a>
-          <a href="#contact">404</a>
-        </nav>
+
         <div>
           <h2>İletişim</h2>
           <address>
@@ -905,7 +878,6 @@ export default function App() {
       {page === "blog" ? (
         <main>
           <BlogPage onAppointment={openModal} />
-          <Appointment onAppointment={openModal} />
         </main>
       ) : (
         <>
@@ -920,9 +892,7 @@ export default function App() {
             <div className="reveal">
               <ServicesOverview />
             </div>
-            <div className="reveal">
-              <SpecialtyCare />
-            </div>
+
             <div className="reveal">
               <Appointment onAppointment={openModal} />
             </div>
@@ -932,7 +902,7 @@ export default function App() {
           </main>
         </>
       )}
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
       <AppointmentModal isOpen={isModalOpen} onClose={closeModal} />
     </>
   );

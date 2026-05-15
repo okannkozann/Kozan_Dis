@@ -310,7 +310,7 @@ button {
 
 .hero {
   position: relative;
-  min-height: 760px;
+  min-height: max(760px, 100svh);
   padding: 0 clamp(24px, 5vw, 64px);
   color: var(--white);
   overflow: hidden;
@@ -351,7 +351,7 @@ button {
   justify-content: flex-start;
   gap: 40px;
   max-width: var(--container);
-  min-height: 720px;
+  min-height: max(720px, 100svh);
   margin: 0 auto;
   padding-top: 160px;
 }
@@ -430,7 +430,6 @@ button {
   max-width: 620px;
   margin: 0 0 26px;
   text-align: left;
-  padding-top: 30px;
 }
 
 .sectionLabel {
@@ -1280,6 +1279,14 @@ button {
 .footer {
   padding: var(--section-pad) clamp(24px, 5vw, 64px) 34px;
   color: var(--white);
+  background:
+    linear-gradient(150deg, rgba(2, 145, 150, 0) 0%, rgba(2, 146, 151, 0.95) 72%),
+    radial-gradient(var(--teal-500) 1px, transparent 1px),
+    radial-gradient(var(--teal-500) 1px, transparent 1px),
+    var(--teal-700);
+  background-position: 0 0, 0 0, 20px 20px, 0 0;
+  background-size: auto, 40px 40px, 40px 40px, auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footerGrid {
@@ -1420,7 +1427,7 @@ button {
   }
 
   .hero {
-    min-height: 840px;
+    min-height: max(840px, 100svh);
     padding: 0 20px;
   }
 
