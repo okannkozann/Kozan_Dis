@@ -113,52 +113,244 @@ const testimonials = [
 
 const blogPosts = [
   {
+    slug: "ilk-dis-muayenesi",
     title: "İlk Diş Muayenesinde Sizi Neler Bekler? Rahat Bir Başlangıç Rehberi",
-    date: "15 Mayıs 2026",
     image: blogFirstVisit,
     tags: ["İlk Muayene", "Dijital Teşhis", "Hasta Konforu"],
+    excerpt:
+      "İlk muayene, yalnızca sorun aranan kısa bir kontrol değil; ağız sağlığınızın bütüncül olarak değerlendirildiği ve size özel bakım planının oluşturulduğu ilk adımdır.",
+    sections: [
+      {
+        heading: "Süreç sakin bir görüşmeyle başlar",
+        body:
+          "Diş hekiminiz öncelikle şikayetlerinizi, daha önce geçirdiğiniz tedavileri, kullandığınız ilaçları ve beklentilerinizi dinler. Bu görüşme, tedavi planının yalnızca klinik bulgulara değil günlük alışkanlıklarınıza ve konfor ihtiyacınıza göre şekillenmesini sağlar.",
+      },
+      {
+        heading: "Ağız içi muayene ve dijital kayıtlar alınır",
+        body:
+          "Dişler, diş etleri, kapanış ilişkisi ve mevcut restorasyonlar detaylı şekilde incelenir. Gerekli görüldüğünde dijital röntgen ya da ağız içi görüntüleme ile görünmeyen alanlar da değerlendirilir; böylece erken bulgular daha net fark edilebilir.",
+      },
+      {
+        heading: "Plan anlaşılır şekilde paylaşılır",
+        body:
+          "Muayene sonunda öncelikli ihtiyaçlar, alternatif tedavi seçenekleri ve tahmini süreç size sade bir dille aktarılır. Amaç, hangi işlemin neden önerildiğini bilmeniz ve karar sürecine güvenle katılmanızdır.",
+      },
+    ],
+    takeaways: [
+      "Varsa eski röntgenlerinizi ve kullandığınız ilaç listesini yanınızda getirin.",
+      "Ağrı, hassasiyet veya estetik beklentilerinizi muayene başında açıkça paylaşın.",
+      "Tedavi planını anlamadığınız noktaları sormaktan çekinmeyin.",
+    ],
   },
   {
+    slug: "dis-tasi-temizligi",
     title: "Diş Taşı Temizliği Ne Sıklıkla Yapılmalı? Profesyonel Bakımın Önemi",
-    date: "8 Mayıs 2026",
     image: blogCleaning,
     tags: ["Diş Temizliği", "Koruyucu Bakım", "Ağız Hijyeni"],
+    excerpt:
+      "Diş taşı temizliği, estetik bir işlemden çok diş eti sağlığını koruyan temel bir bakım adımıdır. Düzenli kontrollerle plak ve tartar birikimi ilerlemeden yönetilebilir.",
+    sections: [
+      {
+        heading: "Diş taşı neden oluşur?",
+        body:
+          "Günlük fırçalama ile uzaklaştırılamayan plak, zamanla tükürük mineralleriyle sertleşerek diş taşına dönüşür. Bu sert tabaka özellikle diş eti çizgisinde biriktiğinde kanama, hassasiyet ve ağız kokusu gibi belirtilere zemin hazırlayabilir.",
+      },
+      {
+        heading: "Temizlik sıklığı kişiye göre değişir",
+        body:
+          "Genel olarak altı ayda bir kontrol önerilse de diş eti yatkınlığı, sigara kullanımı, ortodontik apareyler ve ağız hijyeni alışkanlıkları bu aralığı değiştirebilir. Hekiminiz muayenede size uygun takip sıklığını belirler.",
+      },
+      {
+        heading: "Profesyonel bakım ev rutinini destekler",
+        body:
+          "Klinikte yapılan temizlik, evdeki fırçalama ve arayüz bakımının yerine geçmez; bu rutini tamamlar. İşlem sonrası doğru fırça, diş ipi ya da arayüz fırçası seçimiyle temizliğin etkisi daha uzun korunur.",
+      },
+    ],
+    takeaways: [
+      "Diş eti kanaması normal kabul edilmemeli, kontrol randevusu ile değerlendirilmelidir.",
+      "Diş taşı evde kazınarak temizlenmemelidir; mine ve diş eti zarar görebilir.",
+      "Temizlik sonrası hassasiyet kısa süreli olabilir ve genellikle doğru bakımla azalır.",
+    ],
   },
   {
+    slug: "implant-dijital-planlama",
     title: "İmplant Tedavisinde Dijital Planlama: Daha Öngörülebilir Sonuçlar",
-    date: "29 Nisan 2026",
     image: blogImplantPlanning,
     tags: ["İmplant", "Dijital Planlama", "Ağız Cerrahisi"],
+    excerpt:
+      "Dijital planlama, implantın yalnızca kemiğe yerleştirilmesini değil; çiğneme, estetik ve uzun dönem bakım hedeflerini birlikte düşünmeyi sağlar.",
+    sections: [
+      {
+        heading: "Planlama görüntüleme ile başlar",
+        body:
+          "Üç boyutlu görüntüleme ve ağız içi kayıtlar, kemik hacmi, sinir komşulukları ve protez pozisyonu hakkında önemli bilgiler verir. Bu veriler implantın açı, derinlik ve konumunun daha güvenli şekilde değerlendirilmesine yardımcı olur.",
+      },
+      {
+        heading: "Protez sonucu en baştan düşünülür",
+        body:
+          "Başarılı implant tedavisinde hedef yalnızca vidanın yerleşmesi değildir. Yeni dişin kapanışa, gülüş hattına ve komşu dişlerle ilişkiye uyumu planın merkezindedir. Dijital yaklaşım bu sonucu daha baştan simüle etmeyi kolaylaştırır.",
+      },
+      {
+        heading: "Takip ve hijyen uzun ömür için önemlidir",
+        body:
+          "İmplant sonrası düzenli kontroller, profesyonel temizlik ve doğru ev bakımı tedavinin uzun dönem başarısını etkiler. Hekiminiz size özel fırça, arayüz bakım ürünü ve kontrol aralığını belirler.",
+      },
+    ],
+    takeaways: [
+      "İmplant uygunluğu kişisel kemik yapısı ve genel sağlık durumuyla birlikte değerlendirilir.",
+      "Dijital planlama, cerrahi ve protez aşamalarının aynı hedefe çalışmasını sağlar.",
+      "İmplant sonrası bakım, doğal diş bakımı kadar düzenli olmalıdır.",
+    ],
   },
   {
+    slug: "seffaf-plak-ortodonti",
     title: "Şeffaf Plaklarla Ortodonti: Günlük Hayatta Konforlu Tedavi Mümkün mü?",
-    date: "21 Nisan 2026",
     image: blogClearAligners,
     tags: ["Ortodonti", "Şeffaf Plak", "Estetik Tedavi"],
+    excerpt:
+      "Şeffaf plak tedavisi, uygun vakalarda diş dizilimini daha estetik ve günlük yaşama uyumlu bir süreçle düzeltmeye yardımcı olur.",
+    sections: [
+      {
+        heading: "Tedavi dijital analizle planlanır",
+        body:
+          "Dişlerin mevcut konumu ölçülür ve hedeflenen hareketler aşamalı olarak planlanır. Bu sayede hangi dişin ne kadar hareket edeceği, tedavi süresinin nasıl ilerleyeceği ve kontrol aralıkları daha net konuşulabilir.",
+      },
+      {
+        heading: "Günlük kullanım disiplin ister",
+        body:
+          "Plakların etkili olabilmesi için hekiminizin önerdiği süre boyunca düzenli takılması gerekir. Yemek ve içecek sırasında çıkarılabilmesi konfor sağlar; ancak bu esneklik tedavi sorumluluğunu da beraberinde getirir.",
+      },
+      {
+        heading: "Her vaka plak tedavisine uygun olmayabilir",
+        body:
+          "Diş çapraşıklığı, kapanış bozukluğu ve çene ilişkisi tedavi seçimini etkiler. Bazı durumlarda şeffaf plaklar tek başına yeterli olurken, bazı vakalarda farklı ortodontik yaklaşımlar gerekebilir.",
+      },
+    ],
+    takeaways: [
+      "Plaklar yemeklerden sonra temiz dişlere takılmalıdır.",
+      "Düzenli kullanım tedavi süresinin planlandığı gibi ilerlemesine yardımcı olur.",
+      "Kontrol randevuları atlanmamalıdır; küçük uyumsuzluklar erken fark edilir.",
+    ],
   },
   {
+    slug: "cocuklarda-ilk-dis-hekimi-ziyareti",
     title: "Çocuklarda İlk Diş Hekimi Ziyareti: Güven Veren Bir Deneyim Nasıl Kurulur?",
-    date: "12 Nisan 2026",
     image: blogPediatricVisit,
     tags: ["Çocuk Diş Hekimliği", "Aile Bakımı", "Koruyucu Diş Hekimliği"],
+    excerpt:
+      "Çocuklarda ilk ziyaretin amacı yalnızca dişleri kontrol etmek değil; klinik ortamla güvenli ve pozitif bir bağ kurmaktır.",
+    sections: [
+      {
+        heading: "İlk izlenim çocuğun yaklaşımını belirler",
+        body:
+          "Kısa, sakin ve tanıştırıcı bir randevu çocuğun diş hekimi koltuğunu tehdit olarak görmemesine yardımcı olur. Bu nedenle ilk ziyaretin mutlaka ağrı ya da acil bir problemle başlamaması tercih edilir.",
+      },
+      {
+        heading: "Aile dili süreci etkiler",
+        body:
+          "Randevu öncesinde 'korkma' ya da 'acımaz' gibi kelimeler çocuğun dikkatini korku ihtimaline çekebilir. Bunun yerine hekimin dişleri sayacağı, fırçalama hakkında konuşacağı ve kısa bir kontrol yapacağı sade şekilde anlatılabilir.",
+      },
+      {
+        heading: "Koruyucu bakım erken yaşta başlar",
+        body:
+          "Fırçalama alışkanlığı, beslenme düzeni, flor uygulamaları ve fissür örtücü gibi koruyucu seçenekler çocuğun ihtiyacına göre değerlendirilir. Düzenli takip, küçük sorunların büyümeden fark edilmesini sağlar.",
+      },
+    ],
+    takeaways: [
+      "İlk randevuyu ağrı başlamadan planlamak daha olumlu bir deneyim yaratır.",
+      "Çocuğa işlem vaadi vermek yerine hekimin anlatmasına alan bırakın.",
+      "Evde fırçalama rutini aile desteğiyle oyunlaştırılabilir.",
+    ],
   },
   {
+    slug: "dis-eti-kanamasi",
     title: "Diş Eti Kanaması Neden Olur? Erken Belirtileri Doğru Okumak",
-    date: "4 Nisan 2026",
     image: blogGumHealth,
     tags: ["Diş Eti Sağlığı", "Periodontoloji", "Erken Teşhis"],
+    excerpt:
+      "Diş eti kanaması çoğu zaman fırçalamadan kaynaklanan basit bir durum sanılır; oysa diş eti iltihabının erken işareti olabilir.",
+    sections: [
+      {
+        heading: "Kanama bir uyarı sinyalidir",
+        body:
+          "Sağlıklı diş eti genellikle düzenli fırçalama sırasında kanamaz. Plak birikimi, diş taşı, hatalı fırçalama tekniği veya uyumsuz restorasyonlar diş eti dokusunu hassaslaştırabilir.",
+      },
+      {
+        heading: "Erken dönemde tedavi daha kolaydır",
+        body:
+          "Diş eti problemleri ilerledikçe kemik desteğini etkileyebilir ve tedavi daha kapsamlı hale gelebilir. Erken muayene, temizlik ve kişiye özel hijyen eğitimiyle süreç daha kontrollü ilerler.",
+      },
+      {
+        heading: "Ev bakımı doğru teknikle yapılmalıdır",
+        body:
+          "Sert fırça kullanmak ya da kanama gördüğünüz bölgeyi fırçalamaktan kaçınmak sorunu çözmez. Yumuşak fırça, doğru açı ve arayüz temizliği diş eti sağlığını destekler.",
+      },
+    ],
+    takeaways: [
+      "Bir haftadan uzun süren kanama için diş hekimi kontrolü planlayın.",
+      "Diş ipi ya da arayüz fırçası seçiminde hekiminizin önerisini alın.",
+      "Sigara kullanımı diş eti belirtilerini maskeleyebilir.",
+    ],
   },
   {
-    title: "Doğal Gülüş Tasarımı: Estetik Diş Hekimliğinde Kişiye Özel Yaklaşım",
-    date: "27 Mart 2026",
+    slug: "dogal-gulus-tasarimi",
+    title: "Doğal Gülüş Tasarimi: Estetik Diş Hekimliğinde Kişiye Özel Yaklaşım",
     image: blogSmileDesign,
     tags: ["Gülüş Tasarımı", "Estetik Diş Hekimliği", "Diş Rengi"],
+    excerpt:
+      "Doğal gülüş tasarımı, yalnızca beyaz dişler hedeflemek yerine yüz hatları, dudak çizgisi ve kişisel beklentilerle uyumlu bir sonuç oluşturmayı amaçlar.",
+    sections: [
+      {
+        heading: "Analiz yüz bütünüyle yapılır",
+        body:
+          "Diş formu, renk, diş eti görünümü, dudak hareketi ve yüz oranları birlikte değerlendirilir. Bu analiz, estetik sonucu yapay değil kişiye ait hissettiren temel adımdır.",
+      },
+      {
+        heading: "Tedavi seçenekleri birlikte planlanır",
+        body:
+          "Beyazlatma, bonding, porselen lamina, diş eti düzenlemesi veya ortodontik hazırlık gibi seçenekler ihtiyaca göre kombine edilebilir. Her hasta için aynı reçete uygulanmaz; beklenti ve mevcut diş dokusu belirleyicidir.",
+      },
+      {
+        heading: "Doğallık detaylarda saklıdır",
+        body:
+          "Dişlerin tamamının aynı renkte ve aynı formda olması doğal görünümü zayıflatabilir. Yüzle uyumlu ton geçişleri, yüzey karakteri ve doğru ışık yansıması daha dengeli bir sonuç sağlar.",
+      },
+    ],
+    takeaways: [
+      "Estetik beklentinizi örnek fotoğraflarla anlatmanız planlamayı kolaylaştırır.",
+      "Sağlıklı diş eti estetik tedavinin temelidir.",
+      "Kalıcı işlemlerden önce mümkün olduğunda ön izleme değerlendirilmelidir.",
+    ],
   },
   {
+    slug: "acil-dis-agrisi",
     title: "Acil Diş Ağrısında Ne Yapmalı? Kliniğe Gelmeden Önce İlk Adımlar",
-    date: "18 Mart 2026",
     image: blogEmergencyToothache,
     tags: ["Acil Diş Hekimliği", "Diş Ağrısı", "Hasta Rehberi"],
+    excerpt:
+      "Ani başlayan diş ağrısında doğru ilk adımlar, kliniğe ulaşana kadar konforunuzu artırabilir ve sorunun büyümesini önlemeye yardımcı olabilir.",
+    sections: [
+      {
+        heading: "Ağrının karakterini not edin",
+        body:
+          "Ağrı sıcak-soğukla mı artıyor, gece mi şiddetleniyor, çiğneme sırasında mı hissediliyor? Bu bilgiler diş hekiminin problemi daha hızlı değerlendirmesine yardımcı olur.",
+      },
+      {
+        heading: "Evde güvenli ilk adımlar",
+        body:
+          "Bölgeyi temiz tutmak, ılık tuzlu suyla nazikçe çalkalamak ve hekiminizin daha önce önerdiği ağrı yönetimi yaklaşımını takip etmek geçici rahatlama sağlayabilir. Ağrıyan dişe aspirin ya da benzeri ilaçları doğrudan koymak dokuya zarar verebilir.",
+      },
+      {
+        heading: "Bazı belirtiler bekletilmemelidir",
+        body:
+          "Yüzde şişlik, ateş, yutkunma güçlüğü, travma sonrası kırık veya kontrol edilemeyen ağrı varsa randevu geciktirilmemelidir. Bu durumlar hızlı değerlendirme gerektirebilir.",
+      },
+    ],
+    takeaways: [
+      "Ağrıyı bastırmak sorunun geçtiği anlamına gelmez; kontrol gerekir.",
+      "Şişlik veya ateş varsa kliniği vakit kaybetmeden arayın.",
+      "Kırılan parçayı temiz bir kapta saklayıp randevuya getirebilirsiniz.",
+    ],
   },
 ];
 
@@ -168,6 +360,18 @@ function normalizeSearchText(value) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/ı/g, "i");
+}
+
+function getPageFromHash(hash) {
+  return hash.startsWith("#blog") ? "blog" : "home";
+}
+
+function getBlogSlugFromHash(hash) {
+  if (!hash.startsWith("#blog/")) {
+    return "";
+  }
+
+  return decodeURIComponent(hash.slice("#blog/".length));
 }
 
 function ToothLogo() {
@@ -516,8 +720,9 @@ function Testimonials() {
   );
 }
 
-function BlogPage({ onAppointment }) {
+function BlogPage({ selectedSlug, onSelectPost, onBackToBlog, onAppointment }) {
   const [query, setQuery] = useState("");
+  const selectedPost = blogPosts.find((post) => post.slug === selectedSlug);
   const normalizedQuery = normalizeSearchText(query.trim());
   const visiblePosts = useMemo(() => {
     if (!normalizedQuery) {
@@ -525,10 +730,20 @@ function BlogPage({ onAppointment }) {
     }
 
     return blogPosts.filter((post) => {
-      const searchable = normalizeSearchText([post.title, post.date, ...post.tags].join(" "));
+      const searchable = normalizeSearchText([post.title, ...post.tags].join(" "));
       return searchable.includes(normalizedQuery);
     });
   }, [normalizedQuery]);
+
+  if (selectedPost) {
+    return (
+      <BlogArticle
+        post={selectedPost}
+        onBackToBlog={onBackToBlog}
+        onAppointment={onAppointment}
+      />
+    );
+  }
 
   return (
     <section className="blogPage softPattern" id="blog">
@@ -545,19 +760,36 @@ function BlogPage({ onAppointment }) {
 
         <div className="blogGrid">
           {visiblePosts.map((post) => (
-            <article className="blogCard" key={post.title}>
-              <button className="blogCardButton" onClick={onAppointment} aria-label={`${post.title} yazısını aç`}>
+            <article className="blogCard" key={post.slug}>
+              <a
+                className="blogCardButton"
+                href={`#blog/${post.slug}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  onSelectPost(post.slug);
+                }}
+                aria-label={`${post.title} makalesini aç`}
+              >
                 <img src={post.image} alt="" />
-              </button>
+              </a>
               <div className="blogTags" aria-label="Makale kategorileri">
                 {post.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
               </div>
               <h3>
-                <button className="blogTitleButton" onClick={onAppointment}>{post.title}</button>
+                <a
+                  className="blogTitleButton"
+                  href={`#blog/${post.slug}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    onSelectPost(post.slug);
+                  }}
+                >
+                  {post.title}
+                </a>
               </h3>
-              <time dateTime="2024-03-09">{post.date}</time>
+              <p>{post.excerpt}</p>
             </article>
           ))}
         </div>
@@ -569,6 +801,58 @@ function BlogPage({ onAppointment }) {
         )}
       </div>
     </section>
+  );
+}
+
+function BlogArticle({ post, onBackToBlog, onAppointment }) {
+  return (
+    <article className="blogArticle softPattern" id="blog">
+      <div className="blogArticleShell">
+        <button type="button" className="articleBack" onClick={onBackToBlog}>
+          Bloga Dön
+        </button>
+
+        <header className="articleHero">
+          <div className="articleHeroCopy">
+            <div className="blogTags" aria-label="Makale kategorileri">
+              {post.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+            <h1>{post.title}</h1>
+            <p>{post.excerpt}</p>
+          </div>
+          <img src={post.image} alt="" />
+        </header>
+
+        <div className="articleBody">
+          <div className="articleContent">
+            {post.sections.map((section) => (
+              <section key={section.heading}>
+                <h2>{section.heading}</h2>
+                <p>{section.body}</p>
+              </section>
+            ))}
+          </div>
+
+          <aside className="articleAside" aria-label="Makale özeti">
+            <h2>Kısa Notlar</h2>
+            <ul>
+              {post.takeaways.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p>
+              Bu içerik genel bilgilendirme amaçlıdır. Size uygun tanı ve tedavi planı için klinik
+              muayene gerekir.
+            </p>
+            <button type="button" className="button buttonDark" onClick={onAppointment}>
+              Randevu Al
+            </button>
+          </aside>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -801,7 +1085,14 @@ export default function App() {
       return "home";
     }
 
-    return window.location.hash === "#blog" ? "blog" : "home";
+    return getPageFromHash(window.location.hash);
+  });
+  const [blogSlug, setBlogSlug] = useState(() => {
+    if (typeof window === "undefined") {
+      return "";
+    }
+
+    return getBlogSlugFromHash(window.location.hash);
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -810,6 +1101,7 @@ export default function App() {
 
   function handleNavigate(nextPage, hash) {
     setPage(nextPage);
+    setBlogSlug(getBlogSlugFromHash(hash));
     window.history.pushState(null, "", hash);
 
     const scrollToTarget = () => {
@@ -828,7 +1120,8 @@ export default function App() {
 
   React.useEffect(() => {
     const syncPageWithHash = () => {
-      setPage(window.location.hash === "#blog" ? "blog" : "home");
+      setPage(getPageFromHash(window.location.hash));
+      setBlogSlug(getBlogSlugFromHash(window.location.hash));
     };
 
     window.addEventListener("hashchange", syncPageWithHash);
@@ -859,7 +1152,7 @@ export default function App() {
 
     if (page === "blog") {
       requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0 }));
-    } else if (window.location.hash && window.location.hash !== "#blog") {
+    } else if (window.location.hash && !window.location.hash.startsWith("#blog")) {
       const scrollToHashTarget = () => {
         const target = document.getElementById(window.location.hash.slice(1));
         target?.scrollIntoView();
@@ -870,14 +1163,27 @@ export default function App() {
     }
 
     return () => observer.disconnect();
-  }, [page]);
+  }, [page, blogSlug]);
+
+  function handleBlogPostSelect(slug) {
+    handleNavigate("blog", `#blog/${slug}`);
+  }
+
+  function handleBackToBlog() {
+    handleNavigate("blog", "#blog");
+  }
 
   return (
     <>
       <Header currentPage={page} onNavigate={handleNavigate} onAppointment={openModal} />
       {page === "blog" ? (
         <main>
-          <BlogPage onAppointment={openModal} />
+          <BlogPage
+            selectedSlug={blogSlug}
+            onSelectPost={handleBlogPostSelect}
+            onBackToBlog={handleBackToBlog}
+            onAppointment={openModal}
+          />
         </main>
       ) : (
         <>

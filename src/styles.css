@@ -993,6 +993,13 @@ button {
   font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
 }
 
+.blogCard p {
+  margin: 0 0 16px;
+  color: var(--gray-500);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
 .blogCard h3 a:hover {
   color: var(--teal-700);
 }
@@ -1005,6 +1012,164 @@ button {
 
 .blogEmpty {
   margin: 48px 0 0;
+}
+
+.blogArticle {
+  scroll-margin-top: 96px;
+  padding: clamp(96px, 9vw, 148px) clamp(24px, 5vw, 64px) clamp(88px, 9vw, 150px);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.78) 0%, var(--white) 68%),
+    radial-gradient(rgba(2, 220, 227, 0.66) 1px, transparent 1px),
+    radial-gradient(rgba(2, 220, 227, 0.42) 1px, transparent 1px),
+    var(--white);
+  background-position: 0 0, 0 0, 20px 20px, 0 0;
+  background-size: auto, 40px 40px, 40px 40px, auto;
+}
+
+.blogArticleShell {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.articleBack {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  margin-bottom: 34px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--teal-700);
+  font: inherit;
+  cursor: pointer;
+}
+
+.articleBack::before {
+  content: "←";
+  margin-right: 10px;
+}
+
+.articleHero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(420px, 0.76fr);
+  gap: clamp(36px, 5vw, 74px);
+  align-items: center;
+  margin-bottom: clamp(56px, 7vw, 92px);
+}
+
+.articleHeroCopy {
+  min-width: 0;
+}
+
+.articleHero h1 {
+  margin: 24px 0 24px;
+  color: var(--teal-900);
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+}
+
+.articleHero p {
+  max-width: 760px;
+  margin: 0 0 24px;
+  color: var(--gray-500);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.articleHero time {
+  color: var(--teal-700);
+  font-size: 15px;
+}
+
+.articleHero img {
+  width: 100%;
+  aspect-ratio: 1.22 / 1;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: var(--shadow-faint);
+}
+
+.articleBody {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(320px, 0.34fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+
+.articleContent {
+  display: grid;
+  gap: 38px;
+}
+
+.articleContent section {
+  padding-bottom: 38px;
+  border-bottom: 1px solid rgba(2, 146, 151, 0.16);
+}
+
+.articleContent section:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.articleContent h2,
+.articleAside h2 {
+  margin: 0 0 16px;
+  color: var(--teal-900);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.18;
+}
+
+.articleContent p,
+.articleAside p,
+.articleAside li {
+  color: var(--gray-500);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.articleContent p {
+  margin: 0;
+}
+
+.articleAside {
+  position: sticky;
+  top: 118px;
+  padding: 34px;
+  background: var(--mint-50);
+  box-shadow: var(--shadow-faint);
+}
+
+.articleAside ul {
+  display: grid;
+  gap: 14px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+}
+
+.articleAside li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.articleAside li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--teal-700);
+}
+
+.articleAside p {
+  margin: 0 0 28px;
+  font-size: 14px;
+}
+
+.articleAside .button {
+  width: 100%;
 }
 
 .testimonialFrame {
@@ -1491,6 +1656,8 @@ button {
   .serviceList,
   .specialtyGrid,
   .blogGrid,
+  .articleHero,
+  .articleBody,
   .newsletterForm {
     grid-template-columns: 1fr;
   }
@@ -1500,8 +1667,44 @@ button {
     scroll-margin-top: 142px;
   }
 
+  .blogArticle {
+    padding: 196px 20px 78px;
+    scroll-margin-top: 142px;
+  }
+
   .blogHeader h2 {
     font-size: 38px;
+  }
+
+  .articleHero {
+    gap: 34px;
+    margin-bottom: 52px;
+  }
+
+  .articleHero h1 {
+    font-size: 38px;
+  }
+
+  .articleHero p {
+    font-size: 16px;
+  }
+
+  .articleHero img {
+    aspect-ratio: 1.55 / 1;
+  }
+
+  .articleBody {
+    gap: 44px;
+  }
+
+  .articleContent h2,
+  .articleAside h2 {
+    font-size: 24px;
+  }
+
+  .articleAside {
+    position: static;
+    padding: 28px 24px;
   }
 
   .blogHeader p,
