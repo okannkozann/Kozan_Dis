@@ -279,6 +279,7 @@ button {
   line-height: 1;
   transition: transform 180ms ease;
 }
+
 .menuToggle {
   display: none;
   border: 0;
@@ -1062,6 +1063,7 @@ button {
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -1378,11 +1380,9 @@ button {
       url("./assets/generated/mobile-menu-children-941.jpg");
     background-image:
       linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(239, 255, 255, 0.88) 46%, rgba(1, 73, 75, 0.48) 100%),
-      image-set(
-        url("./assets/generated/mobile-menu-children-480.jpg") 1x,
+      image-set(url("./assets/generated/mobile-menu-children-480.jpg") 1x,
         url("./assets/generated/mobile-menu-children-768.jpg") 2x,
-        url("./assets/generated/mobile-menu-children-941.jpg") 3x
-      );
+        url("./assets/generated/mobile-menu-children-941.jpg") 3x);
     background-position: center, center bottom;
     background-size: cover, cover;
     flex-direction: column;
@@ -1435,7 +1435,7 @@ button {
     gap: 36px 12px;
   }
 
-  .footerLead { 
+  .footerLead {
     grid-column: 1 / -1;
   }
 
