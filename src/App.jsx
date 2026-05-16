@@ -13,14 +13,8 @@ import blogPediatricVisit from "./assets/generated/blog-pediatric-visit.png";
 import blogGumHealth from "./assets/generated/blog-gum-health.png";
 import blogSmileDesign from "./assets/generated/blog-smile-design.png";
 import blogEmergencyToothache from "./assets/generated/blog-emergency-toothache.png";
-import testimonialNicole from "./assets/reference/testimonial-nicole.png";
-import testimonialMargaret from "./assets/reference/testimonial-margaret.png";
-import testimonialRobert from "./assets/reference/testimonial-robert.png";
-import testimonialSophia from "./assets/reference/testimonial-sophia.png";
-import testimonialMark from "./assets/reference/testimonial-mark.png";
-import testimonialEvelyn from "./assets/reference/testimonial-evelyn.png";
-
 const navLinks = [
+  { href: "#top", label: "Ana Sayfa", page: "home" },
   { href: "#about", label: "Hakkımızda", page: "home" },
   { href: "#services", label: "Hizmetler", page: "home" },
   { href: "#blog", label: "Blog", page: "blog" },
@@ -77,37 +71,31 @@ const testimonials = [
     quote:
       "Kozan Diş'in çocuk diş hekimliği hizmetleri çocuklarımın diş bakımına pozitif başlamasını sağladı. Nazik yaklaşım ve sıcak ortam ailemiz için güven verdi.",
     name: "Nicole D.",
-    image: testimonialNicole,
   },
   {
     quote:
       "Restoratif diş hekimliği sürecim gülüşümü tamamen dönüştürdü. İmplantlar ve kaplamalar sayesinde yeniden rahatça gülümsüyorum.",
     name: "Margaret R.",
-    image: testimonialMargaret,
   },
   {
     quote:
       "İmplant işlemindeki titizlik ve sonuçlar beklentimin üstündeydi. Ekip tüm süreci sakin, anlaşılır ve güvenli hale getirdi.",
     name: "Robert D.",
-    image: testimonialRobert,
   },
   {
     quote:
       "Acil diş problemimde hızlı dönüş ve uzman müdahale gerçekten fark yarattı. Tüm diş ihtiyaçlarım için güvendiğim klinik burası.",
     name: "Sophia B.",
-    image: testimonialSophia,
   },
   {
     quote:
       "Şeffaf plak tedavisi beklediğimden çok daha konforlu geçti. Planlama, takip ve sonuçlar çok profesyoneldi.",
     name: "Mark W.",
-    image: testimonialMark,
   },
   {
     quote:
       "Diş eti sağlığıma gösterdikleri özen günlük konforumda büyük fark yarattı. Kozan Diş güvenilir ve çok yetkin bir ekip.",
     name: "Evelyn M.",
-    image: testimonialEvelyn,
   },
 ];
 
@@ -437,6 +425,7 @@ function Icon({ name }) {
 
 function Header({ currentPage, onNavigate, onAppointment }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -446,14 +435,26 @@ function Header({ currentPage, onNavigate, onAppointment }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  React.useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [menuOpen]);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className={`siteHeader ${currentPage === "blog" ? "lightHeader" : ""} ${scrolled ? "scrolled" : ""}`}>
+    <header className={`siteHeader ${currentPage === "blog" ? "lightHeader" : ""} ${scrolled ? "scrolled" : ""} ${menuOpen ? "menuOpen" : ""}`}>
       <a
         className="brand"
         href="#top"
         aria-label="Kozan Ağız ve Diş Sağlığı ana sayfa"
         onClick={(event) => {
           event.preventDefault();
+          closeMenu();
           onNavigate("home", "#top");
         }}
       >
@@ -462,7 +463,21 @@ function Header({ currentPage, onNavigate, onAppointment }) {
           Kozan <strong>Diş</strong>
         </span>
       </a>
-      <nav className="mainNav" aria-label="Ana navigasyon">
+
+      <button
+        className="menuToggle"
+        aria-label={menuOpen ? "Menüyü kapat" : "Menüyü aç"}
+        aria-expanded={menuOpen}
+        onClick={toggleMenu}
+      >
+        <div className="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <nav className={`mainNav ${menuOpen ? "isOpen" : ""}`} aria-label="Ana navigasyon">
         {navLinks.map(({ href, label, page }) => (
           <a
             className={currentPage === page && (page === "blog" || href === "#top") ? "active" : ""}
@@ -470,6 +485,7 @@ function Header({ currentPage, onNavigate, onAppointment }) {
             key={href}
             onClick={(event) => {
               event.preventDefault();
+              closeMenu();
               onNavigate(page, href);
             }}
           >
@@ -482,6 +498,7 @@ function Header({ currentPage, onNavigate, onAppointment }) {
         href="#appointment"
         onClick={(event) => {
           event.preventDefault();
+          closeMenu();
           onNavigate("home", "#appointment");
         }}
       >
@@ -693,10 +710,9 @@ function Testimonials() {
             <path d="m15 6-6 6 6 6" />
           </svg>
         </button>
-        <blockquote>
+        <blockquote key={active}>
           <span className="quoteMark">“</span>
           <p>{testimonial.quote}</p>
-          <img src={testimonial.image} alt={`${testimonial.name} portresi`} />
           <cite>{testimonial.name}</cite>
         </blockquote>
         <button className="arrowButton arrowRight" type="button" aria-label="Sonraki yorum" onClick={next}>
@@ -878,7 +894,7 @@ function AppointmentModal({ isOpen, onClose }) {
             </div>
             <div>
               <span>Telefon</span>
-              <a href="tel:+903220000000">+90 322 000 00 00</a>
+              <a href="tel:+902128640956">(0212) 864 09 56</a>
             </div>
           </div>
           <div className="modalContactItem">
@@ -906,8 +922,8 @@ function ContactSection() {
   const contactMethods = [
     {
       title: "Telefon",
-      value: "+90 322 000 00 00",
-      href: "tel:+903220000000",
+      value: "(0212) 864 09 56",
+      href: "tel:+902128640956",
       detail: "Randevu ve kısa bilgi talepleri için bizi arayabilirsiniz.",
       icon: "phone",
     },
@@ -920,7 +936,7 @@ function ContactSection() {
     },
     {
       title: "Adres",
-      value: "Kozan, Adana",
+      value: "Mimaroba Mah. Günyüzü Evleri A Blok D:8 Büyükçekmece, İstanbul",
       href: "#contact",
       detail: "Kozan Ağız ve Diş Sağlığı Merkezi'nde hizmet veriyoruz.",
       icon: "pin",
@@ -1021,6 +1037,15 @@ function Footer({ onNavigate }) {
         <nav aria-label="Footer menü">
           <h2>Menü</h2>
           <a
+            href="#top"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate("home", "#top");
+            }}
+          >
+            Ana Sayfa
+          </a>
+          <a
             href="#about"
             onClick={(e) => {
               e.preventDefault();
@@ -1058,16 +1083,23 @@ function Footer({ onNavigate }) {
           </a>
         </nav>
 
-        <div>
-          <h2>İletişim</h2>
+        <div className="footerAddress">
+          <h2>Adres</h2>
           <address>
             Kozan Ağız ve Diş Sağlığı Merkezi
             <br />
-            Kozan, Adana
+            Mimaroba Mahallesi Günyüzü Evleri A Blok D:8
             <br />
+            Büyükçekmece İstanbul - Avrupa, 34535
+          </address>
+        </div>
+
+        <div className="footerContact">
+          <h2>İletişim</h2>
+          <address>
             <a href="mailto:iletisim@kozan.dental">iletisim@kozan.dental</a>
             <br />
-            <a href="tel:+903220000000">+90 322 000 00 00</a>
+            <a href="tel:+902128640956">(0212) 864 09 56</a>
           </address>
         </div>
       </div>
