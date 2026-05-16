@@ -1,18 +1,42 @@
 import React, { useMemo, useState } from "react";
-import heroBackground from "./assets/generated/hero-background-v2.png";
-import clinicLobby from "./assets/generated/about-clinic.png";
-import dentalCabinet from "./assets/generated/dental-treatment.png";
-import appointmentRoom from "./assets/generated/appointment-room-v2.png";
-import teamAmelia from "./assets/generated/team-amelia.png";
-import teamElizabeth from "./assets/generated/team-elizabeth.png";
-import blogFirstVisit from "./assets/generated/blog-first-visit.png";
-import blogCleaning from "./assets/generated/blog-cleaning.png";
-import blogImplantPlanning from "./assets/generated/blog-implant-planning.png";
-import blogClearAligners from "./assets/generated/blog-clear-aligners.png";
-import blogPediatricVisit from "./assets/generated/blog-pediatric-visit.png";
-import blogGumHealth from "./assets/generated/blog-gum-health.png";
-import blogSmileDesign from "./assets/generated/blog-smile-design.png";
-import blogEmergencyToothache from "./assets/generated/blog-emergency-toothache.png";
+
+const imageAssets = import.meta.glob("./assets/generated/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+function asset(path) {
+  return imageAssets[path];
+}
+
+function imageSet(baseName, widths, sizes) {
+  return {
+    src: asset(`./assets/generated/${baseName}-${widths[widths.length - 1]}.webp`),
+    srcSet: widths
+      .map((width) => `${asset(`./assets/generated/${baseName}-${width}.webp`)} ${width}w`)
+      .join(", "),
+    sizes,
+  };
+}
+
+const images = {
+  hero: imageSet("hero-background-v2", [640, 960, 1440, 1672], "100vw"),
+  clinicLobby: imageSet("about-clinic", [480, 768, 1200, 1536], "(max-width: 1040px) 100vw, 690px"),
+  dentalCabinet: imageSet("dental-treatment", [480, 768, 1200], "(max-width: 1040px) 100vw, 525px"),
+  appointmentRoom: imageSet("appointment-room-v2", [480, 768, 1200, 1717], "(max-width: 1040px) 100vw, 705px"),
+  teamAmelia: imageSet("team-amelia", [320, 480], "240px"),
+  teamElizabeth: imageSet("team-elizabeth", [320, 480], "240px"),
+  blogFirstVisit: imageSet("blog-first-visit", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
+  blogCleaning: imageSet("blog-cleaning", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
+  blogImplantPlanning: imageSet("blog-implant-planning", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
+  blogClearAligners: imageSet("blog-clear-aligners", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
+  blogPediatricVisit: imageSet("blog-pediatric-visit", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
+  blogGumHealth: imageSet("blog-gum-health", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
+  blogSmileDesign: imageSet("blog-smile-design", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
+  blogEmergencyToothache: imageSet("blog-emergency-toothache", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
+};
+
 const navLinks = [
   { href: "#top", label: "Ana Sayfa", page: "home" },
   { href: "#about", label: "Hakkımızda", page: "home" },
@@ -22,9 +46,9 @@ const navLinks = [
 ];
 
 const teamMembers = [
-  ["Dr. Ebru Kozan", "Baş Diş Hekimi", teamAmelia],
+  ["Dr. Ebru Kozan", "Baş Diş Hekimi", images.teamAmelia],
 
-  ["Dr. Murat Kozan", "Periodontist", teamElizabeth],
+  ["Dr. Murat Kozan", "Periodontist", images.teamElizabeth],
 ];
 
 const generalServices = [
@@ -66,6 +90,30 @@ const schedule = [
   ["Pazar", "Kapalı"],
 ];
 
+const contactMethods = [
+  {
+    title: "Telefon",
+    value: "(0212) 864 09 56",
+    href: "tel:+902128640956",
+    detail: "Randevu ve kısa bilgi talepleri için bizi arayabilirsiniz.",
+    icon: "phone",
+  },
+  {
+    title: "E-posta",
+    value: "iletisim@kozan.dental",
+    href: "mailto:iletisim@kozan.dental",
+    detail: "Tedavi süreci ve klinik hakkında sorularınızı iletin.",
+    icon: "mail",
+  },
+  {
+    title: "Adres",
+    value: "Mimaroba Mah. Günyüzü Evleri A Blok D:8 Büyükçekmece, İstanbul",
+    href: "#contact",
+    detail: "Kozan Ağız ve Diş Sağlığı Merkezi'nde hizmet veriyoruz.",
+    icon: "pin",
+  },
+];
+
 const testimonials = [
   {
     quote:
@@ -103,7 +151,7 @@ const blogPosts = [
   {
     slug: "ilk-dis-muayenesi",
     title: "İlk Diş Muayenesinde Sizi Neler Bekler? Rahat Bir Başlangıç Rehberi",
-    image: blogFirstVisit,
+    image: images.blogFirstVisit,
     tags: ["İlk Muayene", "Dijital Teşhis", "Hasta Konforu"],
     excerpt:
       "İlk muayene, yalnızca sorun aranan kısa bir kontrol değil; ağız sağlığınızın bütüncül olarak değerlendirildiği ve size özel bakım planının oluşturulduğu ilk adımdır.",
@@ -133,7 +181,7 @@ const blogPosts = [
   {
     slug: "dis-tasi-temizligi",
     title: "Diş Taşı Temizliği Ne Sıklıkla Yapılmalı? Profesyonel Bakımın Önemi",
-    image: blogCleaning,
+    image: images.blogCleaning,
     tags: ["Diş Temizliği", "Koruyucu Bakım", "Ağız Hijyeni"],
     excerpt:
       "Diş taşı temizliği, estetik bir işlemden çok diş eti sağlığını koruyan temel bir bakım adımıdır. Düzenli kontrollerle plak ve tartar birikimi ilerlemeden yönetilebilir.",
@@ -163,7 +211,7 @@ const blogPosts = [
   {
     slug: "implant-dijital-planlama",
     title: "İmplant Tedavisinde Dijital Planlama: Daha Öngörülebilir Sonuçlar",
-    image: blogImplantPlanning,
+    image: images.blogImplantPlanning,
     tags: ["İmplant", "Dijital Planlama", "Ağız Cerrahisi"],
     excerpt:
       "Dijital planlama, implantın yalnızca kemiğe yerleştirilmesini değil; çiğneme, estetik ve uzun dönem bakım hedeflerini birlikte düşünmeyi sağlar.",
@@ -193,7 +241,7 @@ const blogPosts = [
   {
     slug: "seffaf-plak-ortodonti",
     title: "Şeffaf Plaklarla Ortodonti: Günlük Hayatta Konforlu Tedavi Mümkün mü?",
-    image: blogClearAligners,
+    image: images.blogClearAligners,
     tags: ["Ortodonti", "Şeffaf Plak", "Estetik Tedavi"],
     excerpt:
       "Şeffaf plak tedavisi, uygun vakalarda diş dizilimini daha estetik ve günlük yaşama uyumlu bir süreçle düzeltmeye yardımcı olur.",
@@ -223,7 +271,7 @@ const blogPosts = [
   {
     slug: "cocuklarda-ilk-dis-hekimi-ziyareti",
     title: "Çocuklarda İlk Diş Hekimi Ziyareti: Güven Veren Bir Deneyim Nasıl Kurulur?",
-    image: blogPediatricVisit,
+    image: images.blogPediatricVisit,
     tags: ["Çocuk Diş Hekimliği", "Aile Bakımı", "Koruyucu Diş Hekimliği"],
     excerpt:
       "Çocuklarda ilk ziyaretin amacı yalnızca dişleri kontrol etmek değil; klinik ortamla güvenli ve pozitif bir bağ kurmaktır.",
@@ -253,7 +301,7 @@ const blogPosts = [
   {
     slug: "dis-eti-kanamasi",
     title: "Diş Eti Kanaması Neden Olur? Erken Belirtileri Doğru Okumak",
-    image: blogGumHealth,
+    image: images.blogGumHealth,
     tags: ["Diş Eti Sağlığı", "Periodontoloji", "Erken Teşhis"],
     excerpt:
       "Diş eti kanaması çoğu zaman fırçalamadan kaynaklanan basit bir durum sanılır; oysa diş eti iltihabının erken işareti olabilir.",
@@ -283,7 +331,7 @@ const blogPosts = [
   {
     slug: "dogal-gulus-tasarimi",
     title: "Doğal Gülüş Tasarimi: Estetik Diş Hekimliğinde Kişiye Özel Yaklaşım",
-    image: blogSmileDesign,
+    image: images.blogSmileDesign,
     tags: ["Gülüş Tasarımı", "Estetik Diş Hekimliği", "Diş Rengi"],
     excerpt:
       "Doğal gülüş tasarımı, yalnızca beyaz dişler hedeflemek yerine yüz hatları, dudak çizgisi ve kişisel beklentilerle uyumlu bir sonuç oluşturmayı amaçlar.",
@@ -313,7 +361,7 @@ const blogPosts = [
   {
     slug: "acil-dis-agrisi",
     title: "Acil Diş Ağrısında Ne Yapmalı? Kliniğe Gelmeden Önce İlk Adımlar",
-    image: blogEmergencyToothache,
+    image: images.blogEmergencyToothache,
     tags: ["Acil Diş Hekimliği", "Diş Ağrısı", "Hasta Rehberi"],
     excerpt:
       "Ani başlayan diş ağrısında doğru ilk adımlar, kliniğe ulaşana kadar konforunuzu artırabilir ve sorunun büyümesini önlemeye yardımcı olabilir.",
@@ -359,7 +407,11 @@ function getBlogSlugFromHash(hash) {
     return "";
   }
 
-  return decodeURIComponent(hash.slice("#blog/".length));
+  try {
+    return decodeURIComponent(hash.slice("#blog/".length));
+  } catch {
+    return "";
+  }
 }
 
 function ToothLogo() {
@@ -425,7 +477,7 @@ function Icon({ name }) {
   );
 }
 
-function Header({ currentPage, onNavigate, onAppointment }) {
+function Header({ currentPage, onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -513,7 +565,14 @@ function Header({ currentPage, onNavigate, onAppointment }) {
 function Hero({ onNavigate }) {
   return (
     <section className="hero" id="top">
-      <img className="heroBgImage" src={heroBackground} alt="" />
+      <img
+        className="heroBgImage"
+        src={images.hero.src}
+        srcSet={images.hero.srcSet}
+        sizes={images.hero.sizes}
+        alt=""
+        fetchPriority="high"
+      />
       <div className="heroInner">
         <div className="heroCopy">
           <h1>
@@ -565,7 +624,14 @@ function About() {
     <section className="section aboutSection" id="about">
       <div className="aboutGrid">
         <div className="aboutMedia dotAccent">
-          <img src={clinicLobby} alt="Kozan Diş klinik lobisi" />
+          <img
+            src={images.clinicLobby.src}
+            srcSet={images.clinicLobby.srcSet}
+            sizes={images.clinicLobby.sizes}
+            alt="Kozan Diş klinik lobisi"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div className="aboutCopy">
           <SectionIntro label="Hakkında" title="Diş Kliniğimiz" align="left">
@@ -605,7 +671,14 @@ function Team() {
         {teamMembers.map(([name, role, image]) => (
           <article className="teamCard" key={name}>
             <div className="teamPhoto">
-              <img src={image} alt={`${name} portresi`} />
+              <img
+                src={image.src}
+                srcSet={image.srcSet}
+                sizes={image.sizes}
+                alt={`${name} portresi`}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <h3>{name}</h3>
             <p>{role}</p>
@@ -646,7 +719,14 @@ function ServicesOverview() {
           ))}
         </div>
         <div className="servicePhoto dotAccent">
-          <img src={dentalCabinet} alt="Diş tedavisi sırasında hasta ve diş hekimi" />
+          <img
+            src={images.dentalCabinet.src}
+            srcSet={images.dentalCabinet.srcSet}
+            sizes={images.dentalCabinet.sizes}
+            alt="Diş tedavisi sırasında hasta ve diş hekimi"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </section>
@@ -678,7 +758,14 @@ function Appointment({ onAppointment }) {
           </dl>
         </div>
         <div className="appointmentImage">
-          <img src={appointmentRoom} alt="Kozan Diş tedavi odası" />
+          <img
+            src={images.appointmentRoom.src}
+            srcSet={images.appointmentRoom.srcSet}
+            sizes={images.appointmentRoom.sizes}
+            alt="Kozan Diş tedavi odası"
+            loading="lazy"
+            decoding="async"
+          />
           <button className="button buttonDark floatingButton" onClick={onAppointment}>
             Randevu Al
           </button>
@@ -774,7 +861,19 @@ function BlogPage({ selectedSlug, onSelectPost, onBackToBlog, onAppointment }) {
           </p>
         </div>
 
-
+        <label className="blogSearch">
+          <span className="srOnly">Blog yazılarında ara</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m16.5 16.5 4 4" />
+          </svg>
+          <input
+            type="search"
+            value={query}
+            placeholder="Konu, tedavi veya kategori ara"
+            onChange={(event) => setQuery(event.target.value)}
+          />
+        </label>
 
         <div className="blogGrid">
           {visiblePosts.map((post) => (
@@ -788,7 +887,14 @@ function BlogPage({ selectedSlug, onSelectPost, onBackToBlog, onAppointment }) {
                 }}
                 aria-label={`${post.title} makalesini aç`}
               >
-                <img src={post.image} alt="" />
+                <img
+                  src={post.image.src}
+                  srcSet={post.image.srcSet}
+                  sizes={post.image.sizes}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
               </a>
               <div className="blogTags" aria-label="Makale kategorileri">
                 {post.tags.map((tag) => (
@@ -840,7 +946,7 @@ function BlogArticle({ post, onBackToBlog, onAppointment }) {
             <h1>{post.title}</h1>
             <p>{post.excerpt}</p>
           </div>
-          <img src={post.image} alt="" />
+          <img src={post.image.src} srcSet={post.image.srcSet} sizes={post.image.sizes} alt="" decoding="async" />
         </header>
 
         <div className="articleBody">
@@ -875,17 +981,87 @@ function BlogArticle({ post, onBackToBlog, onAppointment }) {
 }
 
 function AppointmentModal({ isOpen, onClose }) {
+  const modalRef = React.useRef(null);
+  const closeButtonRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
+
+    const previousActiveElement = document.activeElement;
+    const focusableSelector = [
+      "a[href]",
+      "button:not([disabled])",
+      "input:not([disabled])",
+      "select:not([disabled])",
+      "textarea:not([disabled])",
+      "[tabindex]:not([tabindex='-1'])",
+    ].join(",");
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        modalRef.current?.querySelectorAll(focusableSelector) ?? []
+      );
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        modalRef.current?.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+    requestAnimationFrame(() => closeButtonRef.current?.focus());
+
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleKeyDown);
+      previousActiveElement?.focus?.();
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div className="modalOverlay" onClick={onClose}>
-      <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-        <button className="closeButton" onClick={onClose} aria-label="Kapat">
+      <div
+        className="modalContent"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="appointment-modal-title"
+        aria-describedby="appointment-modal-description"
+        tabIndex={-1}
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="closeButton" onClick={onClose} aria-label="Kapat" ref={closeButtonRef}>
           &times;
         </button>
         <div className="modalHeader">
-          <h2>Hızlı Randevu</h2>
-          <p>Bizimle iletişime geçerek hemen randevunuzu oluşturabilirsiniz.</p>
+          <h2 id="appointment-modal-title">Hızlı Randevu</h2>
+          <p id="appointment-modal-description">Bizimle iletişime geçerek hemen randevunuzu oluşturabilirsiniz.</p>
         </div>
         <div className="modalBody">
           <div className="modalContactItem">
@@ -921,30 +1097,6 @@ function AppointmentModal({ isOpen, onClose }) {
 }
 
 function ContactSection() {
-  const contactMethods = [
-    {
-      title: "Telefon",
-      value: "(0212) 864 09 56",
-      href: "tel:+902128640956",
-      detail: "Randevu ve kısa bilgi talepleri için bizi arayabilirsiniz.",
-      icon: "phone",
-    },
-    {
-      title: "E-posta",
-      value: "iletisim@kozan.dental",
-      href: "mailto:iletisim@kozan.dental",
-      detail: "Tedavi süreci ve klinik hakkında sorularınızı iletin.",
-      icon: "mail",
-    },
-    {
-      title: "Adres",
-      value: "Mimaroba Mah. Günyüzü Evleri A Blok D:8 Büyükçekmece, İstanbul",
-      href: "#contact",
-      detail: "Kozan Ağız ve Diş Sağlığı Merkezi'nde hizmet veriyoruz.",
-      icon: "pin",
-    },
-  ];
-
   return (
     <section className="section contactSection" id="contact">
       <div className="contactGrid">
@@ -1015,7 +1167,7 @@ function ContactIcon({ name }) {
 
 function Footer({ onNavigate }) {
   return (
-    <footer className="footer siteFooter" id="contact">
+    <footer className="footer siteFooter">
       <div className="footerGrid">
         <div className="footerLead">
           <a className="brand footerBrand" href="#top">
@@ -1154,8 +1306,16 @@ export default function App() {
 
   React.useEffect(() => {
     const syncPageWithHash = () => {
-      setPage(getPageFromHash(window.location.hash));
+      const nextPage = getPageFromHash(window.location.hash);
+      setPage(nextPage);
       setBlogSlug(getBlogSlugFromHash(window.location.hash));
+
+      if (nextPage === "home" && window.location.hash) {
+        requestAnimationFrame(() => {
+          const target = document.getElementById(window.location.hash.slice(1));
+          target?.scrollIntoView();
+        });
+      }
     };
 
     window.addEventListener("hashchange", syncPageWithHash);
@@ -1209,7 +1369,7 @@ export default function App() {
 
   return (
     <>
-      <Header currentPage={page} onNavigate={handleNavigate} onAppointment={openModal} />
+      <Header currentPage={page} onNavigate={handleNavigate} />
       {page === "blog" ? (
         <main>
           <BlogPage
@@ -1238,6 +1398,9 @@ export default function App() {
             </div>
             <div className="reveal">
               <Testimonials />
+            </div>
+            <div className="reveal">
+              <ContactSection />
             </div>
           </main>
         </>

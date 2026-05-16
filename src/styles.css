@@ -2,8 +2,10 @@
   --teal-900: #01494b;
   --teal-700: #029297;
   --teal-500: #02dce3;
+  --aqua-400: #20f0f6;
   --aqua-300: #68f8fd;
   --aqua-100: #ccffff;
+  --aqua-50: #efffff;
   --mint-50: #f5ffff;
   --gray-100: #e6e6e6;
   --gray-500: #808080;
@@ -91,16 +93,6 @@ button {
   background-size: auto, 40px 40px, 40px 40px, auto;
 }
 
-.hero.tealPattern {
-  background:
-    linear-gradient(90deg, rgba(2, 146, 151, 0.95) 0%, rgba(2, 146, 151, 0.82) 47%, rgba(2, 146, 151, 0.48) 100%),
-    radial-gradient(rgba(2, 220, 227, 0.58) 1px, transparent 1px),
-    radial-gradient(rgba(2, 220, 227, 0.4) 1px, transparent 1px),
-    url("./assets/generated/hero-background.png");
-  background-position: 0 0, 0 0, 20px 20px, center;
-  background-size: auto, 40px 40px, 40px 40px, cover;
-}
-
 .softPattern {
   background:
     radial-gradient(var(--teal-500) 1px, transparent 1px),
@@ -145,8 +137,7 @@ button {
   padding: var(--section-pad) clamp(24px, 5vw, 64px);
 }
 
-.button,
-.smallButton {
+.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -164,16 +155,7 @@ button {
   font-size: 22px;
 }
 
-.smallButton {
-  min-height: 50px;
-  padding: 16px 28px;
-  background: var(--white);
-  color: var(--teal-900);
-  font-size: 14px;
-}
-
 .button:hover,
-.smallButton:hover,
 .headerCta:hover {
   transform: translateY(-2px);
 }
@@ -190,12 +172,6 @@ button {
 .buttonLight {
   background: var(--white);
   color: var(--teal-900);
-}
-
-.centeredButton {
-  display: flex;
-  width: fit-content;
-  margin: 48px auto 0;
 }
 
 .siteHeader {
@@ -439,20 +415,6 @@ button {
   border-radius: 4px;
 }
 
-.heroPhoto {
-  display: flex;
-  align-self: stretch;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.heroPhoto img {
-  width: min(470px, 100%);
-  max-height: 670px;
-  object-fit: cover;
-  object-position: center bottom;
-}
-
 .sectionIntro {
   max-width: 760px;
   margin: 0 auto 76px;
@@ -474,8 +436,7 @@ button {
 }
 
 .sectionIntro h2,
-.appointmentIntro h2,
-.newsletterCard h2 {
+.appointmentIntro h2 {
   margin: 0;
   color: var(--teal-900);
   font-size: 36px;
@@ -530,34 +491,6 @@ button {
   box-shadow: var(--shadow-faint);
 }
 
-.addressCard {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, 50%);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: min(100%, 340px);
-  padding: 28px 32px;
-  background: var(--teal-900);
-  color: var(--white);
-  box-shadow: 0 20px 40px rgba(1, 45, 47, 0.22);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-.addressCard svg {
-  width: 36px;
-  height: 36px;
-  fill: none;
-  stroke: var(--aqua-300);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.2;
-}
-
 .proofGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -568,7 +501,6 @@ button {
 
 .proofGrid h3,
 .serviceList h3,
-.specialtyCard h3,
 .teamCard h3,
 .schedulePanel h3 {
   margin: 0 0 12px;
@@ -579,8 +511,7 @@ button {
 }
 
 .proofGrid p,
-.serviceList p,
-.specialtyCard li {
+.serviceList p {
   margin: 0;
   color: var(--gray-500);
   font-size: 14px;
@@ -712,12 +643,6 @@ button {
   font-size: 18px;
 }
 
-.priceButton {
-  align-self: end;
-  width: fit-content;
-  margin-top: 8px;
-}
-
 .servicePhoto {
   overflow: visible;
   margin-top: -60px;
@@ -733,66 +658,6 @@ button {
   height: 480px;
   object-fit: cover;
   box-shadow: var(--shadow-faint);
-}
-
-.specialtySection {
-  background: #fafafa;
-}
-
-.specialtyGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
-  gap: clamp(38px, 5vw, 72px);
-  max-width: var(--container);
-  margin: 0 auto;
-}
-
-.specialtyCard {
-  text-align: center;
-}
-
-.roundIcon {
-  display: grid;
-  width: 156px;
-  height: 156px;
-  place-items: center;
-  margin: 0 auto 26px;
-  overflow: visible;
-  border: 1px solid var(--teal-700);
-  border-radius: 999px;
-  background: var(--white);
-  color: var(--teal-700);
-}
-
-.roundIcon::before {
-  top: -28px;
-  left: -28px;
-  width: 212px;
-  height: 212px;
-}
-
-.roundIcon svg {
-  width: 74px;
-  height: 74px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.4;
-}
-
-.specialtyCard ul {
-  display: grid;
-  gap: 10px;
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.specialtyCard li::before {
-  content: "✓";
-  margin-right: 10px;
-  color: var(--teal-700);
 }
 
 .appointment {
@@ -1427,66 +1292,6 @@ button {
   background: var(--teal-700);
 }
 
-.newsletterSection {
-  padding: var(--section-pad) clamp(24px, 5vw, 64px);
-  background: var(--white);
-}
-
-.newsletterCard {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1fr);
-  align-items: center;
-  gap: clamp(32px, 6vw, 86px);
-  max-width: var(--container);
-  min-height: 270px;
-  margin: 0 auto;
-  padding: clamp(38px, 5vw, 68px);
-  color: var(--white);
-}
-
-.newsletterCard h2 {
-  color: var(--aqua-300);
-}
-
-.newsletterCard p {
-  max-width: 520px;
-  margin: 20px 0 0;
-  color: var(--white);
-}
-
-.newsletterForm {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 150px;
-  gap: 12px;
-}
-
-.newsletterForm input,
-.newsletterForm button {
-  min-height: 58px;
-  border: 0;
-  border-radius: 2px;
-}
-
-.newsletterForm input {
-  width: 100%;
-  padding: 0 18px;
-  background: var(--white);
-  color: var(--ink);
-}
-
-.newsletterForm button {
-  background: var(--teal-900);
-  color: var(--white);
-  font-weight: 400;
-}
-
-.newsletterForm p {
-  grid-column: 1 / -1;
-  margin: 0;
-  color: var(--aqua-300);
-  font-size: 14px;
-}
-
 .footer {
   padding: var(--section-pad) clamp(24px, 5vw, 64px) 34px;
   color: var(--white);
@@ -1624,8 +1429,7 @@ button {
   .aboutGrid,
   .serviceLayout,
   .contactGrid,
-  .appointmentPanel,
-  .newsletterCard {
+  .appointmentPanel {
     grid-template-columns: 1fr;
   }
 
@@ -1655,10 +1459,6 @@ button {
 
   .heroCopy {
     padding-bottom: 0;
-  }
-
-  .heroPhoto {
-    justify-content: center;
   }
 
   .serviceOverview {
@@ -1745,11 +1545,6 @@ button {
     min-width: 0;
   }
 
-  .heroPhoto img {
-    width: min(360px, 100%);
-    max-height: 520px;
-  }
-
   .aboutMedia {
     padding-left: 0;
     overflow: hidden;
@@ -1759,20 +1554,12 @@ button {
     left: -70px;
   }
 
-  .addressCard {
-    position: static;
-    width: 100%;
-    margin-top: 0;
-  }
-
   .proofGrid,
   .teamGrid,
   .serviceList,
-  .specialtyGrid,
   .blogGrid,
   .articleHero,
-  .articleBody,
-  .newsletterForm {
+  .articleBody {
     grid-template-columns: 1fr;
   }
 
@@ -1916,16 +1703,14 @@ button {
     right: 8px;
   }
 
-  .newsletterSection {
-    padding: 0 20px 50px;
-  }
-
-  .newsletterCard {
-    padding: 34px 24px;
-  }
-
   .footerBottom {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .headerCta {
+    display: none;
   }
 }
 
@@ -2062,6 +1847,26 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 
