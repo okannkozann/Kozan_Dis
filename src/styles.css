@@ -1038,13 +1038,17 @@ button {
 .testimonialFrame {
   position: relative;
   max-width: 860px;
-  min-height: 440px;
+  min-height: 380px;
   margin: 0 auto;
-  padding: 64px 88px 58px;
+  padding: 64px 88px 64px;
   background: var(--white);
   box-shadow: var(--shadow-faint);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 
 .testimonialFrame blockquote {
   margin: 0;
@@ -1073,7 +1077,8 @@ button {
 
 .testimonialFrame blockquote p {
   max-width: 660px;
-  margin: 16px auto 36px;
+  margin: 0 auto 36px;
+
   color: var(--ink);
   font-size: 18px;
   font-style: italic;
@@ -1203,7 +1208,8 @@ button {
 
 .arrowButton {
   position: absolute;
-  top: 54%;
+  top: 50%;
+  transform: translateY(-50%);
   display: grid;
   width: 48px;
   height: 48px;
@@ -1240,8 +1246,12 @@ button {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 34px;
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
 }
+
 
 .paginationDots button {
   width: 9px;
@@ -1639,9 +1649,10 @@ button {
   }
 
   .testimonialFrame {
-    min-height: 0;
-    padding: 46px 48px 44px;
+    min-height: 420px;
+    padding: 46px 28px 72px;
   }
+
 
   .testimonialFrame blockquote p {
     font-size: 15px;
