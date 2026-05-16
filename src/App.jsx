@@ -626,7 +626,7 @@ function About() {
           />
         </div>
         <div className="aboutCopy">
-          <SectionIntro label="Hakkında" title="Diş Kliniğimiz" align="left">
+          <SectionIntro label="Hakkımızda" title="Diş Kliniğimiz" align="left">
             Kliniğimizde ağız ve diş sağlığınızı modern teknoloji, uzman hekim kadrosu ve hasta odaklı yaklaşımımızla ele alıyoruz. Her hastamız için güvenilir, konforlu ve kişiye özel tedavi çözümleri sunmayı amaçlıyoruz.
             Estetik diş hekimliği, implant, ortodonti ve genel diş tedavilerinde sağlıklı, doğal ve uzun vadeli sonuçlar hedefliyoruz.
           </SectionIntro>
@@ -769,6 +769,11 @@ function Appointment({ onAppointment }) {
 
 function Testimonials() {
   const [active, setActive] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
   const testimonial = testimonials[active];
 
   function previous() {
@@ -779,13 +784,39 @@ function Testimonials() {
     setActive((current) => (current + 1) % testimonials.length);
   }
 
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      next();
+    } else if (isRightSwipe) {
+      previous();
+    }
+  };
+
   return (
     <section className="section testimonialSection" id="testimonials">
       <SectionIntro label="Yorumlar" title="Hastalarımızdan Gelenler">
         Değerli hastalarımızın dönüşen gülümsemelerinin ve paylaştıkları deneyimlerin öykülerini
         keşfedin. Sizin memnuniyetiniz bizim en büyük başarımızdır.
       </SectionIntro>
-      <div className="testimonialFrame">
+      <div
+        className="testimonialFrame"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <button className="arrowButton arrowLeft" type="button" aria-label="Önceki yorum" onClick={previous}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="m15 6-6 6 6 6" />
@@ -1050,7 +1081,7 @@ function AppointmentModal({ isOpen, onClose }) {
           </div>
         </div>
         <button className="button buttonDark fullWidth" onClick={onClose}>
-          Anladım
+          Kapat
         </button>
       </div>
     </div>
@@ -1088,12 +1119,17 @@ function ContactSection() {
               <div>
                 <p>{item.title}</p>
                 <h3>
-                  <a href={item.href}>{item.value}</a>
+                  {item.href.startsWith("#") ? (
+                    item.value
+                  ) : (
+                    <a href={item.href}>{item.value}</a>
+                  )}
                 </h3>
                 <span>{item.detail}</span>
               </div>
             </article>
           ))}
+
         </div>
       </div>
     </section>

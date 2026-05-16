@@ -1047,7 +1047,9 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  touch-action: pan-y;
 }
+
 
 
 .testimonialFrame blockquote {
