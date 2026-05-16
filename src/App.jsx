@@ -365,9 +365,11 @@ function getBlogSlugFromHash(hash) {
 function ToothLogo() {
   return (
     <span className="logoMark" aria-hidden="true">
-      <svg viewBox="0 0 36 36">
-        <path d="M4.7 13.4C4.7 7.1 10.4 0 17.5 0s12.8 7.1 12.8 13.4c0 9.5-6.4 17.5-10.1 21.4a3.8 3.8 0 0 1-5.5 0C11.1 30.9 4.7 22.9 4.7 13.4Z" />
-        <path d="M15.2 13.4C15.2 7.1 20.9 0 28 0c1.9 0 3.6.5 5.2 1.3a14.5 14.5 0 0 0-4.2 3.5 5.4 5.4 0 0 0-1-.1c-1.9 0-3.9 1-5.5 2.8-1.7 1.8-2.5 4.1-2.5 5.9 0 7 4.5 13.5 8 17.4 3.6-3.9 8-10.4 8-17.4 0-1.8-.8-4.1-2.5-5.9a9 9 0 0 0-1.5-1.3 14.6 14.6 0 0 1 4.5-2.3C39.8 6.5 42 10.2 42 13.4c0 9.5-6.4 17.5-10.1 21.4a3.8 3.8 0 0 1-5.5 0c-3.8-3.9-11.2-11.9-11.2-21.4Z" />
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 2C12 2 8 5 8 11C8 16 11 22 16 30C21 22 24 16 24 11C24 5 20 2 16 2Z" fill="currentColor" fillOpacity="0.15" />
+        <path d="M16 4C13.5 4 10 6 10 11C10 15 12.5 20 16 27C19.5 20 22 15 22 11C22 6 18.5 4 16 4Z" fill="currentColor" />
+        <path d="M16 4C18.5 4 22 6 22 11C22 15 19.5 20 16 27V4Z" fill="white" fillOpacity="0.2" />
+        <circle cx="12" cy="9" r="1.5" fill="white" />
       </svg>
     </span>
   );
@@ -460,7 +462,7 @@ function Header({ currentPage, onNavigate, onAppointment }) {
       >
         <ToothLogo />
         <span>
-          Kozan <strong>Diş</strong>
+          Kozan <strong>Ağız ve Diş Sağlığı</strong>
         </span>
       </a>
 
@@ -1019,7 +1021,7 @@ function Footer({ onNavigate }) {
           <a className="brand footerBrand" href="#top">
             <ToothLogo />
             <span>
-              Kozan <strong>Diş</strong>
+              Kozan <strong>Ağız ve Diş Sağlığı</strong>
             </span>
           </a>
           <div className="footerSocials" aria-label="Sosyal bağlantılar">
