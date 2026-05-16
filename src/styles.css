@@ -805,43 +805,7 @@ button {
   font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
 }
 
-.blogSearch {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  min-height: 64px;
-  margin-bottom: clamp(52px, 6vw, 86px);
-  padding: 0 24px;
-  border-radius: 999px;
-  background: #fafafa;
-  color: var(--teal-700);
-}
 
-.blogSearch svg {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 auto;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2;
-}
-
-.blogSearch input {
-  width: 100%;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 16px;
-}
-
-.blogSearch input::placeholder {
-  color: #b3b3b3;
-}
 
 .blogGrid {
   display: grid;
@@ -1609,15 +1573,8 @@ button {
     padding: 28px 24px;
   }
 
-  .blogHeader p,
-  .blogSearch input {
+  .blogHeader p {
     font-size: 15px;
-  }
-
-  .blogSearch {
-    min-height: 56px;
-    margin-bottom: 48px;
-    padding: 0 18px;
   }
 
   .contactSection {

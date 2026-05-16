@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 
 const imageAssets = import.meta.glob("./assets/generated/*.webp", {
   eager: true,
@@ -25,8 +25,8 @@ const images = {
   clinicLobby: imageSet("about-clinic", [480, 768, 1200, 1536], "(max-width: 1040px) 100vw, 690px"),
   dentalCabinet: imageSet("dental-treatment", [480, 768, 1200], "(max-width: 1040px) 100vw, 525px"),
   appointmentRoom: imageSet("appointment-room-v2", [480, 768, 1200, 1717], "(max-width: 1040px) 100vw, 705px"),
-  teamAmelia: imageSet("team-amelia", [320, 480], "240px"),
-  teamElizabeth: imageSet("team-elizabeth", [320, 480], "240px"),
+  teamEbru: imageSet("team-ebru", [320, 480], "240px"),
+  teamMurat: imageSet("team-murat", [320, 480], "240px"),
   blogFirstVisit: imageSet("blog-first-visit", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
   blogCleaning: imageSet("blog-cleaning", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
   blogImplantPlanning: imageSet("blog-implant-planning", [480, 800, 1200], "(max-width: 760px) 100vw, 576px"),
@@ -46,9 +46,9 @@ const navLinks = [
 ];
 
 const teamMembers = [
-  ["Dr. Ebru Kozan", "Baş Diş Hekimi", images.teamAmelia],
+  ["Dt. Ebru Kozan", "Diş Hekimi", images.teamEbru],
 
-  ["Dr. Murat Kozan", "Periodontist", images.teamElizabeth],
+  ["Dt. Murat Kozan", "Diş Hekimi", images.teamMurat],
 ];
 
 const generalServices = [
@@ -389,14 +389,6 @@ const blogPosts = [
     ],
   },
 ];
-
-function normalizeSearchText(value) {
-  return value
-    .toLocaleLowerCase("tr-TR")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/ı/g, "i");
-}
 
 function getPageFromHash(hash) {
   return hash.startsWith("#blog") ? "blog" : "home";
@@ -826,19 +818,8 @@ function Testimonials() {
 }
 
 function BlogPage({ selectedSlug, onSelectPost, onBackToBlog, onAppointment }) {
-  const [query, setQuery] = useState("");
   const selectedPost = blogPosts.find((post) => post.slug === selectedSlug);
-  const normalizedQuery = normalizeSearchText(query.trim());
-  const visiblePosts = useMemo(() => {
-    if (!normalizedQuery) {
-      return blogPosts;
-    }
 
-    return blogPosts.filter((post) => {
-      const searchable = normalizeSearchText([post.title, ...post.tags].join(" "));
-      return searchable.includes(normalizedQuery);
-    });
-  }, [normalizedQuery]);
 
   if (selectedPost) {
     return (
@@ -861,22 +842,8 @@ function BlogPage({ selectedSlug, onSelectPost, onBackToBlog, onAppointment }) {
           </p>
         </div>
 
-        <label className="blogSearch">
-          <span className="srOnly">Blog yazılarında ara</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" />
-            <path d="m16.5 16.5 4 4" />
-          </svg>
-          <input
-            type="search"
-            value={query}
-            placeholder="Konu, tedavi veya kategori ara"
-            onChange={(event) => setQuery(event.target.value)}
-          />
-        </label>
-
         <div className="blogGrid">
-          {visiblePosts.map((post) => (
+          {blogPosts.map((post) => (
             <article className="blogCard" key={post.slug}>
               <a
                 className="blogCardButton"
@@ -917,12 +884,6 @@ function BlogPage({ selectedSlug, onSelectPost, onBackToBlog, onAppointment }) {
             </article>
           ))}
         </div>
-
-        {visiblePosts.length === 0 && (
-          <p className="blogEmpty" role="status">
-            Bu aramayla eşleşen makale bulunamadı.
-          </p>
-        )}
       </div>
     </section>
   );
